@@ -20,6 +20,7 @@ class Movie extends Model
         'quality',
         'image',
         'release_year',
+        'reproduction_number',
         'language',
         'video_link',
         'download_link',
