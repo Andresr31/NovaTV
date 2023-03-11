@@ -9,6 +9,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route::get('/test', function () {
+//     $day = 'Saturday';
+//     return view('test')->with('day',$day);
+// });
+
 // Route::get('/index', [EjemploController::class, 'index']);
 // Route::get('/users/{id}', [EjemploController::class, 'getUser']);
 

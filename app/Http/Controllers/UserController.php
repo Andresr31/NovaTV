@@ -18,7 +18,8 @@ class UserController extends Controller
     {
         // $user = User::paginate(10);
         $users = User::all();
-        dd($users);
+        // dd($users);
+        return view('test')->with('users',$users);
         // Retornar vista inyectando todos los usuarios
 
     }
