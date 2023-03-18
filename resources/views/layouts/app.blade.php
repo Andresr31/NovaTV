@@ -7,6 +7,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <!-- Favicon -->
+    <link href="{{ asset('favicon.ico') }}" rel="icon">
+
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
@@ -26,13 +29,17 @@
 <body>
     <div id="app">
         @include('layouts.navbar')
-        <main class="py-4">
+
+        <main class="container mt-5">
             @yield('content')
         </main>
     </div>
+
     <!-- Scripts -->
+    {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
     <script src="{{ asset('js/sweetalert2@11.js') }}"></script>
     <script src="{{ asset('js/jquery.js') }}"></script>
     <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+
 </body>
 </html>
