@@ -62,7 +62,7 @@ class CategoryController extends Controller
     public function show($id)
     {
         $category = Category::find($id);
-        dd($category);
+        return view('elements.categories.show')->with('category',$category);
         // Retornar la vista
     }
 
@@ -75,6 +75,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = Category::find($id);
+        return view('elements.categories.edit')->with('category',$category);
         //Retorna la vista con el formulario de edición del usuario 
     }
 
@@ -93,7 +94,7 @@ class CategoryController extends Controller
         $category->description = $request->description;
         
         if($category->save()){
-            dd($category);
+            return redirect('categories')->with('message', 'La Categoria: '.$category->name.' fue modificada con éxito!!');
             //Retornar la vista
         }
 

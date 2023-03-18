@@ -28,7 +28,7 @@
                         <th>{{$category->id}}</th>
                         <td>{{$category->name}}</td>
                         <td>{{$category->description}}</td>
-                        <td>{{$category->create_at}}</td>
+                        <td>{{$category->created_at}}</td>
                         <td>
                             <a href="{{route('categories.show',$category->id)}}" class="btn btn-sm btn-light"> <i class="fa fa-search"></i></a>
                             <a href="{{route('categories.edit',$category->id)}}" class="btn btn-sm btn-light"> <i class="fa fa-pen"></i></a>
