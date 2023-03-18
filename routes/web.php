@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EjemploController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\MovieController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,7 +20,8 @@ Route::get('/', function () {
 
 Route::resources([
     'users' => UserController::class,
-    'categories' => CategoryController::class
+    'categories' => CategoryController::class,
+    'movies' => MovieController::class
 ]);
 Auth::routes();
 

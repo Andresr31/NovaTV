@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Category;
 
-class CategoryController extends Controller
+class MovieController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,11 +13,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::paginate(10);
-        // $categories = Category::all();
-        return view('elements.categories.index')->with('categories', $categories);
-        // Retornar vista inyectando todos las categorias
-
+        //
     }
 
     /**
@@ -28,8 +23,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('elements.categories.create');
-        // Retornar la vista elements.categories.create
+        //
     }
 
     /**
@@ -40,16 +34,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $category = new Category;
-
-        $category->name = $request->name;
-        $category->description = $request->description;
-        
-        if($category->save()){
-            dd($category);
-            //Retornar la vista
-        }
-        
+        //
     }
 
     /**
@@ -60,9 +45,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $category = Category::find($id);
-        dd($category);
-        // Retornar la vista
+        //
     }
 
     /**
@@ -73,8 +56,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::find($id);
-        //Retorna la vista con el formulario de edición del usuario 
+        //
     }
 
     /**
@@ -86,16 +68,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $category = Category::find($id);
-
-        $category->name = $request->name;
-        $category->description = $request->description;
-        
-        if($category->save()){
-            dd($category);
-            //Retornar la vista
-        }
-
+        //
     }
 
     /**
@@ -106,10 +79,6 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::find($id);
-        
-        if($category->delete()){
-            // Retorne la vista index con el mensaje que pudo eliminar el elemento exitosamente
-        }
+        //
     }
 }
