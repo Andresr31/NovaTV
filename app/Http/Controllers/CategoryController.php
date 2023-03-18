@@ -40,13 +40,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->name);
         $category = new Category;
 
         $category->name = $request->name;
         $category->description = $request->description;
-        
+        // dd($category);
         if($category->save()){
-            dd($category);
+            return redirect('categories')->with('message', 'La Categoria: '.$category->name.' fue creada con éxito!!');
             //Retornar la vista
         }
         
@@ -110,6 +111,7 @@ class CategoryController extends Controller
         
         if($category->delete()){
             // Retorne la vista index con el mensaje que pudo eliminar el elemento exitosamente
+            return redirect('categories')->with('message', 'La Categoria: '.$category->name.' fue eliminada con éxito!!');
         }
     }
 }

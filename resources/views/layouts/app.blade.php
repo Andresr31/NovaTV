@@ -10,7 +10,7 @@
     <!-- Favicon -->
     <link href="{{ asset('favicon.ico') }}" rel="icon">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title')</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -40,6 +40,68 @@
     <script src="{{ asset('js/sweetalert2@11.js') }}"></script>
     <script src="{{ asset('js/jquery.js') }}"></script>
     <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                responsive:{
+                    0:{
+                        items: 1
+                    },
+                    600:{
+                        items: 2
+                    },
+                    1000:{
+                        items: 3
+                    }
+                }
+            });
+            /* - - -*/
+            @if (session('message'))
+                Swal.fire({
+                    title: 'Felicitaciones',
+                    text: '{{ session('message') }}',
+                    icon: 'success',
+                    confirmButtonColor: '#1e5f74',
+                    confirmButtonText: 'Aceptar'
+                });
+            @endif
+            /* - - -*/
+            @if (session('error'))
+                Swal.fire({
+                  position: 'top-end',
+                  icon: 'error',
+                  title: 'Acceso Denegado',
+                  text: '{{ session('error') }}',
+                  showConfirmButton: false,
+                  timer: 2500
+                });
+            @endif
+            /* - - -*/
+            $('.btn-delete').click(function(event) {
+                Swal.fire({
+                    title: 'Esta usted seguro ?',
+                    text: 'Desea eliminar este registro',
+                    icon: 'error',
+                    showCancelButton: true,
+                    cancelButtonColor: '#d0211c',
+                    cancelButtonText: 'Cancelar',
+                    confirmButtonColor: '#1e5f74',
+                    confirmButtonText: 'Aceptar',  
+                }).then((result) => {
+                    if(result.value) {
+                        $(this).parent().submit();
+                    }
+                });
+            });
+
+            
+            
+        });
+    </script>
 
 </body>
 </html>
