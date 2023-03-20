@@ -4,8 +4,28 @@
 @section('content')
 <div class="row">
     <div class="col-md-10 offset-md-1">
-        <h1> <i class="fa fa-plus"></i> Editar Categoría</h1>
+        <h1> <i class="fa fa-pen"></i> Editar Categoría</h1>
         <hr>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                  <a href="{{ url('home') }}">
+                      <i class="fa fa-clipboard-list"></i>  
+                      Escritorio
+                  </a>
+              </li>
+              <li class="breadcrumb-item">
+                  <a href="{{ route('categories.index') }}">
+                      <i class="fas fa-list-alt"></i> 
+                       Módulo Categorías
+                  </a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                  <i class="fa fa-pen"></i> 
+                  Editar Categoría
+              </li>
+            </ol>
+        </nav>
         <form method="POST" action="{{route('categories.update',$category->id)}}">
             @csrf
             @method('PUT')
@@ -26,8 +46,8 @@
                 <textarea name="description" class="form-control @error('description') is-invalid @enderror" cols="30" rows="4">{{ $category->description }}</textarea>
               </div>
             
-              <div class="col-12">
-                <button type="submit" class="btn btn-primary btn-block text-uppercase">Editar <i class="fa fa-save"></i></button>
+              <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary btn-block text-uppercase">Editar <i class="fa fa-save mx-2"></i></button>
               </div>
             
           </form>
