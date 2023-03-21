@@ -6,10 +6,13 @@
     <div class="col-md-10 offset-md-1">
         <h1> <i class="fa fa-film"></i> Lista de Peliculas</h1>
         <hr>
-        <a href="{{route('movies.create')}}" class="btn btn-primary my-3"> 
+        @if (Auth::user()->role->name == 'Admin')
+          <a href="{{route('movies.create')}}" class="btn btn-primary my-3"> 
             <i class="fa fa-plus pr-2"></i>
-             Agregar Pelicula
-        </a>
+            Agregar Pelicula
+          </a>
+        @endif
+        
         <br>
         @if (count($movies)>0)
         <table class="table table-striped table-hover">
@@ -22,6 +25,7 @@
                 <th scope="col">Imagen</th>
                 <th scope="col">Fecha de creación</th>
                 <th scope="col">Acciones</th>
+                
               </tr>
             </thead>
             <tbody>
@@ -33,15 +37,19 @@
                         <td>{{$movie->language}}</td>
                         <td><img src="{{ asset($movie->image) }}" width="36px"></td>
                         <td>{{$movie->created_at}}</td>
+                        
                         <td>
                             <a href="{{route('movies.show',$movie->id)}}" class="btn btn-sm btn-light"> <i class="fa fa-search"></i></a>
-                            <a href="{{route('movies.edit',$movie->id)}}" class="btn btn-sm btn-light"> <i class="fa fa-pen"></i></a>
-                            <form action="{{route('movies.destroy',$movie)}}" method="POST" class="d-inline">
-                                @csrf
-                                @method('delete')
-                                <button type="button" class="btn btn-sm btn-danger btn-delete"><i class="fa fa-trash"></i></button>
-                            </form>
+                            @if (Auth::user()->role->name == 'Admin')
+                              <a href="{{route('movies.edit',$movie->id)}}" class="btn btn-sm btn-light"> <i class="fa fa-pen"></i></a>
+                              <form action="{{route('movies.destroy',$movie)}}" method="POST" class="d-inline">
+                                  @csrf
+                                  @method('delete')
+                                  <button type="button" class="btn btn-sm btn-danger btn-delete"><i class="fa fa-trash"></i></button>
+                              </form>
+                            @endif
                         </td>
+                        
                     </tr>
                 @endforeach
               
