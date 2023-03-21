@@ -68,7 +68,6 @@ class MovieController extends Controller
         $movie->language = $request->language;
         $movie->video_link = $request->video_link;
         $movie->download_link = $request->download_link;
-        $movie->language = $request->language;
         $movie->user_id = $request->user_id;
         $movie->category_id = $request->category_id;
 
