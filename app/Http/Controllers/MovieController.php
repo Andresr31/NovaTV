@@ -12,7 +12,7 @@ class MovieController extends Controller
 {
     public function __construct() 
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => ['show']]);
     }
     /**
      * Display a listing of the resource.
@@ -87,6 +87,8 @@ class MovieController extends Controller
     public function show($id)
     {
         $movie = Movie::find($id);
+        $movie->reproduction_number = $movie->reproduction_number + 1;
+        $movie->save();
         return view('elements.movies.show')->with('movie',$movie);
         // Retornar la vista
     }

@@ -147,7 +147,7 @@
                     $('#list-filter').hide();
                     $sto = setTimeout(function(){
                         clearTimeout($sto);
-                        
+                        console.log(option);
                         $.post('category/filter', {category_id: option, _token: $t}, function(data) {
                             $('.loader').addClass('d-none');
                             $('#list-filter').html(data);

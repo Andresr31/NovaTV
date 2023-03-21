@@ -6,9 +6,10 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MovieController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome'])->name('welcome');
 
 // Route::get('/test', function () {
 //     $day = 'Saturday';
@@ -26,3 +27,6 @@ Route::resources([
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Filter
+Route::post('category/filter', [App\Http\Controllers\HomeController::class, 'filter']);
