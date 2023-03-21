@@ -106,6 +106,14 @@
                reader.readAsDataURL(this.files[0]);
             });
             /* - - -*/
+            $('#image').change(function(event) {
+               let reader = new FileReader();
+               reader.onload = function(event) {
+                    $('#preview').attr('src', event.target.result);
+               }
+               reader.readAsDataURL(this.files[0]);
+            });
+            /* - - -*/
             $('#file').change(function(event) {
                 $(this).parent().submit();
             });
